@@ -424,7 +424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858505645}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1653409441}
@@ -673,8 +673,8 @@ MonoBehaviour:
     MaxSpeedForward: 2
     BoostStop: 0.025
   TowerParams:
-    Boost: 0.2
-    MaxSpeed: 1
+    Boost: 0.005
+    MaxSpeed: 0.25
 --- !u!1 &1956360620
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1337856f2ca80489639c3bb9d478a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TankObj: {fileID: 1653409442}
+  Tower: {fileID: 858505645}
 --- !u!114 &1956360625
 MonoBehaviour:
   m_ObjectHideFlags: 0
