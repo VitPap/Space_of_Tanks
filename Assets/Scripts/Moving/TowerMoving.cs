@@ -1,29 +1,30 @@
 ﻿using UnityEngine;
-
 public class TowerMoving : MonoBehaviour
 {
-    public Tank TankObj; // tank gameobject
-
-    public GameObject Tower; // tower of tank
+    [SerializeField]
+    private Tank TankObj; // tank gameobject
+    
+    [SerializeField]
+    private GameObject Tower; // tower of tank
 
     private float Rotate = 0; 
     private string State = "Stop"; // currect state of tower
     private void Update()
     {
         #region TowerMoving 
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && State == "Stop")
             State = "Right";
 
-        if (Input.GetKeyUp("e"))
+        if (Input.GetKeyUp("e") && State == "Right")
             State = "Stop";
 
-        if (Input.GetKeyDown("q"))
+        if (Input.GetKeyDown("q") && State == "Stop")
             State = "Left";
 
-        if (Input.GetKeyUp("q"))
+        if (Input.GetKeyUp("q") && State == "Left")
             State = "Stop";
 
-        if (State == "Stop") // Stopping Tower
+        if (State == "Stop")
         {
             if (Rotate < 0)
             {
@@ -38,13 +39,13 @@ public class TowerMoving : MonoBehaviour
                 if (Rotate < 0) Rotate = 0;
             }
         }
-        else if (State == "Right") // Rotate to Right
+        else if (State == "Right") 
         {
             Rotate += TankObj.TowerParams.Boost;
 
             if (Rotate > TankObj.TowerParams.MaxSpeed)
                 Rotate = TankObj.TowerParams.MaxSpeed;
-        } else if (State == "Left") // Rotate to Left
+        } else if (State == "Left") 
         {
             Rotate -= TankObj.TowerParams.Boost;
 

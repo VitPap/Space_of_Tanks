@@ -2,7 +2,8 @@
 
 public class CameraMoving : MonoBehaviour
 {
-    public Transform TankTransform;
+    [SerializeField]
+    private Transform TankTransform;
 
     private Camera Camera;
     
@@ -12,10 +13,10 @@ public class CameraMoving : MonoBehaviour
     }
     private void Update()
     {
-        Vector3 Position = TankTransform.position; // getting Tank position
+        Vector3 Position = TankTransform.position; 
 
         Position.z = Camera.transform.position.z;
 
-        Camera.transform.position = Position; // set position for camera
+        Camera.transform.position = Position; 
     }
 }

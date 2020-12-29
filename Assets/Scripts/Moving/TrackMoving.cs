@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-
 public class TrackMoving : MonoBehaviour
 {
-    public Tank TankObj;            // tank gameobject
+    [SerializeField]
+    private Tank TankObj;           
 
     private float Translation = 0;
     private bool IsStopping = false;
@@ -11,11 +11,11 @@ public class TrackMoving : MonoBehaviour
     {
         #region TrackMoving
 
-        float direction = Input.GetAxis("Vertical");    //fix press button move
+        float direction = Input.GetAxis("Vertical");    
 
-        direction *= Time.deltaTime;  // per second than per frame
+        direction *= Time.deltaTime;  
 
-        if (direction > 0) // determine direction and fixing current speed
+        if (direction > 0)
         {
             direction *= TankObj.TrackParams.BoostForward;
 
@@ -34,7 +34,7 @@ public class TrackMoving : MonoBehaviour
 
         if (Input.GetKeyUp("space")) IsStopping = false;
 
-        if (IsStopping) // stopping
+        if (IsStopping)
         {
             if (Translation < 0)
             {
@@ -51,16 +51,16 @@ public class TrackMoving : MonoBehaviour
         }
 
 
-        TankObj.transform.Translate(Vector3.up * Translation);  // make moving
+        TankObj.transform.Translate(Vector3.up * Translation);  
         #endregion
 
         #region TrackRotating
 
-        float rotate = Input.GetAxis("Horizontal") * TankObj.TrackParams.BoostRotate;       //fix press button rotate
+        float rotate = Input.GetAxis("Horizontal") * TankObj.TrackParams.BoostRotate;      
 
-            rotate *= Time.deltaTime;       // per second than per frame
+            rotate *= Time.deltaTime;       
 
-            TankObj.transform.Rotate(Vector3.forward, -rotate); // make rotate
+            TankObj.transform.Rotate(Vector3.forward, -rotate);
         #endregion
     }
 }
